@@ -10,5 +10,5 @@
 md5sum packages/packages.json > packages/manifest
 echo "Updated manifest file"
 git add packages/manifest
-git commit -m "Updated manifest file"
+git commit -m "Updated manifest file" >> /dev/null
 exit 1
