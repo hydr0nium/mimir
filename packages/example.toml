@@ -1,0 +1,24 @@
+[package]
+name = "example"
+description = "Something"
+tags =  ["example"]
+
+[apt]
+available = false
+name = "example"
+
+[pacman]
+available = true
+name = "example"
+
+[pipx]
+available = false
+name = "example"
+
+[gem]
+available = false
+name = "example"
+
+[cargo]
+available = true
+name = "example"

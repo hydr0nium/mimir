@@ -1,3 +1,6 @@
+
+# THIS PROJECT IS CURRENTLY BEING REFORM INTO SOMETHING ELSE!
+
 # Mimir - The All Knowing Pentesting Tool
 
 mimir is a pentest lookup and install tool. It can lookup common tools, privesc techniques like GTFOBins and CVE's and install pentest software.
