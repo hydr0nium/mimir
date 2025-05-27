@@ -3,42 +3,80 @@ from mimir.util.packages import get_package
 from mimir.util.constants import PACKAGE_MANAGERS
 from subprocess import run as subprocess_run, CalledProcessError
 from mimir.util.output import error,info,get
+from mimir.database.handler import add_installed_package
 
 def main(args, config):
 	package_name = args.package_name
 	package = get_package(package_name)
 	info(f"Preparing to install package: '{package_name}'")
 	install(package, config)
+	info(f"Package '{package_name}' successfully installed!")
 
 
 def install(package, config):
 	info(f"Searching through available package managers")
 	for PACKAGE_MANAGER in PACKAGE_MANAGERS:
 		if package[PACKAGE_MANAGER]["available"] and config.getboolean("package_managers", PACKAGE_MANAGER):
-			manager = PACKAGE_MANAGER + "_install"
+			manager = PACKAGE_MANAGER
 			name = package[PACKAGE_MANAGER]["name"]
 			break
-	globals()[manager](name)
+	else:
+		error(f"Could not find package!")
+		exit()
+	globals()[manager + "_install"](name)
+	add_installed_package(package["package"]["name"], name, manager)
 
 def apt_install(package):
 	package_manager = "apt"
-	command = ["sudo", package_manager, "install", "-y", package]
+	command = ["sudo", package_manager, "install", package]
 	run(command, package_manager, package)
 
 def pacman_install(package):
 	package_manager = "pacman"
-	command = ["sudo", package_manager, "-Sy", package]
+	command = ["sudo", package_manager, "-S", package]
 	run(command, package_manager, package)
+
+def pipx_install(package):
+	package_manager = "pipx"
+	command = [package_manager, "install", package]
+	run(command, package_manager, package)
+
+def yay_install(package):
+	package_manager = "yay"
+	command = [package_manager, "-S", package]
+	run(command, package_manager, package)
+
+
+def snap_install(package):
+	package_manager = "snap"
+	command = ["sudo", package_manager, "install", package]
+	run(command, package_manager, package)
+
+def flatpak_install(package):
+	package_manager = "flatpak"
+	command = [package_manager, "install", package]
+
 
 
 def run(command, package_manager, package):
 	info(f"Using {package_manager}")
 	confirm(package, package_manager)
-	try:
-		result = subprocess_run(command, check=True, text=True, capture_output=True)
-	except CalledProcessError as e:
-		error(f"There was an error installing '{package}' with {package_manager}! Here is the {package_manager} error:")
-		print(e.stderr)
+	while True:
+		try:
+			result = subprocess_run(command, check=True)
+			break
+		except CalledProcessError as e:
+			error(f"There was an error installing '{package}' with {package_manager}! Here is the {package_manager} error:")
+			print(e.stderr)
+			break
+		except KeyboardInterrupt:
+			res = get(f"Are you sure you want to quit? This will potentially break the internal database! [y/n]: ")
+			if res != "y":
+				error(f"Quitting")
+				exit()
+
+
+
 
 def confirm(package, package_manager):
 	res = get(f"Are you sure you want to install '{package}' with {package_manager}? [y/n]: ")

@@ -7,4 +7,4 @@ INSTALLED_DB = CONFIG_PATH / Path('installed.db')
 PACKAGE_FILE = CONFIG_PATH / Path('packages.json')
 PACKAGE_URL = "https://raw.githubusercontent.com/hydr0nium/mimir/refs/heads/main/packages/packages.json"
 PACKAGE_TOML_BASE = "https://raw.githubusercontent.com/hydr0nium/mimir/refs/heads/main/packages/"
-PACKAGE_MANAGERS = ["apt", "pacman", "yay", "pipx", "cargo", "gem", "flatpak", "snap"]
+PACKAGE_MANAGERS = ["apt", "pacman", "yay", "pipx", "flatpak", "snap"]

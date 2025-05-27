@@ -1,9 +1,16 @@
 {
     "packages": {
-         "example": {
+        "example": {
+                "name": "example",
                 "version": "1.0",
                 "tags":  ["example"],
                 "description": "This is an example package for testing"
+            },
+        "smbmap": {
+                "name": "smbmap",
+                "version": "1.0",
+                "tags":  ["smb"],
+                "description": "SMBMap is a handy SMB enumeration tool"
             }
         
         }

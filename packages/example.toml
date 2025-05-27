@@ -20,3 +20,6 @@ name = "example"
 [cargo]
 available = true
 name = "example"
+
+[yay]
+available = false
