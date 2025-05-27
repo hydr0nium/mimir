@@ -1,6 +1,6 @@
 from pathlib import Path
 from dataclasses import dataclass
-from configparser import ConfigParser
+from configparser import ConfigParser, Error as ConfigError
 from shutil import which
 from mimir.util.output import error, info, get
 from mimir.util.constants import PACKAGE_MANAGERS, CONFIG_FILE, CONFIG_PATH
@@ -14,12 +14,11 @@ class Config:
             config.read(CONFIG_FILE)
             for package_manager in PACKAGE_MANAGERS:
                 if not which(package_manager) and config.getboolean("package_managers", package_manager):
-                    return fix_config(f"Package Manager mismatch found. This can cause problems. \
-                     Found '{package_manager}' in config but not installed!")
+                    return Config.fix_config(f"Package Manager mismatch found. This can cause problems.\nFound '{package_manager}' in config but it is not installed!")
                     
             return config
-        except:
-            return fix_config(f"Found malformed config file.")
+        except ConfigError as e:
+            return Config.fix_config(f"Found malformed config file.")
 
 
     def create_new_config():
@@ -40,7 +39,7 @@ class Config:
     
     def fix_config(error_msg):
         error(error_msg)
-        new_config = get("Do you want to create a new config [y/n]: ")
+        new_config = get("Do you want to create a new config? [y/n]: ")
         if new_config != "y":
             error(f"Quitting")
             exit()

@@ -2,12 +2,12 @@ import json
 import tomllib
 from mimir.util.constants import PACKAGE_FILE, PACKAGE_URL, PACKAGE_TOML_BASE
 import requests
+from mimir.util.output import info, error
 
 
 def get_package(package_name: str):
     package_json = get_package_json()
     package = package_json[package_name]
-    print(package)
     package_name = package["name"]
     package = get_package_toml(package_name)
     return package
@@ -25,10 +25,18 @@ def get_package_json():
         return package_json["packages"]
 
 def get_package_toml(package_name):
-    package_toml = requests.get(PACKAGE_TOML_BASE + package_name + ".toml")
+    try:
+        info("Downloading toml file for package")
+        package_toml = requests.get(PACKAGE_TOML_BASE + package_name + ".toml")
+    except requests.exceptions.RequestException:
+        error("Could not download toml file. Please check your internet connection!")
     return tomllib.loads(package_toml.text)
 
 
 def download_package_json():
-    package_json = requests.get(PACKAGE_URL)
+    try:
+        info("Downloading packages.json file for package")
+        package_json = requests.get(PACKAGE_URL)
+    except requests.exceptions.RequestException:
+        error("Could not download packages.json file. Please check your internet connection!")
     return package_json.text
