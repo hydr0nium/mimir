@@ -19,3 +19,7 @@ available = false
 
 [cargo]
 available = false
+
+[yay]
+available = false
+
