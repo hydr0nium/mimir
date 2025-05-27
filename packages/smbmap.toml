@@ -10,7 +10,7 @@ available = false
 
 
 [pipx]
-available = false
+available = true
 name = "smbmap"
 
 [gem]
