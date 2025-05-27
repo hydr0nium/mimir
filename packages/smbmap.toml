@@ -1,0 +1,21 @@
+[package]
+name = "smbmap"
+
+[apt]
+available = false
+
+
+[pacman]
+available = false
+
+
+[pipx]
+available = false
+name = "smbmap"
+
+[gem]
+available = false
+
+
+[cargo]
+available = false
