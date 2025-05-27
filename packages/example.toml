@@ -6,17 +6,17 @@ available = true
 name = "example"
 
 [pacman]
-available = false
+available = true
 name = "example"
 
 [pipx]
-available = false
+available = true
 name = "example"
 
 [gem]
-available = false
+available = true
 name = "example"
 
 [cargo]
-available = false
+available = true
 name = "example"
