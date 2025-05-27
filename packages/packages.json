@@ -1,7 +1,10 @@
 {
-    "packages":
-        {
-            "example": "1.0"
-    }
-
+    "packages": {
+         "example": {
+                "version": "1.0",
+                "tags":  ["example"],
+                "description": "This is an example package for testing"
+            }
+        
+        }
 }

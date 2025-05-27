@@ -1,14 +1,12 @@
 [package]
 name = "example"
-description = "Something"
-tags =  ["example"]
 
 [apt]
-available = false
+available = true
 name = "example"
 
 [pacman]
-available = true
+available = false
 name = "example"
 
 [pipx]
@@ -20,5 +18,5 @@ available = false
 name = "example"
 
 [cargo]
-available = true
+available = false
 name = "example"

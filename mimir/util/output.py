@@ -13,4 +13,4 @@ def debug(message: str):
     print(f"[?] {message}")
 
 def get(message: str):
-    return input(f"[*] {message}")
+    return input(f"[*] {message}").strip()

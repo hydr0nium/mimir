@@ -14,12 +14,13 @@ def parse_arguments():
   return parser
 
 def init_install_parser(sub_parser: argparse._SubParsersAction):
-  install_parser = sub_parser.add_parser('install', help="Install a pentesting tool")
+  install_parser = sub_parser.add_parser('install', help="Install a tool")
   install_parser._positionals.title = 'Arguments'
+  install_parser.add_argument("package_name")
   return install_parser
 
 def init_search_parser(sub_parser):
-  search_parser = sub_parser.add_parser('search', help="Search-engine like hacking tool search")
+  search_parser = sub_parser.add_parser('search', help="Search-engine like tool search")
   search_parser._positionals.title = 'Arguments'
   return search_parser
 
