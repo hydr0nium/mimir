@@ -6,7 +6,7 @@ available = false
 name = "sqlmap"
 
 [pacman]
-available = false
+available = true
 name = "sqlmap"
 
 [pipx]
@@ -24,4 +24,12 @@ name = "sqlmap"
 
 [yay]
 available = false
+
+[flatpak]
+available = false
+name = "sqlmap"
+
+[snap]
+available = true
+name = "sqlmap"
 
