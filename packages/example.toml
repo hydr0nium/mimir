@@ -18,13 +18,18 @@ name = "example"
 available = false
 name = "example"
 
+[snap]
+available = false
+name = "example"
+
+[flatpak]
+available = false
+name = "example"
+
 [cargo]
-available = true
+available = false
 name = "example"
 
 [yay]
 available = false
-
-[example_package_manager]
-available = true
 name = "example"

@@ -3,7 +3,7 @@
         "example": {
                 "name": "example",
                 "version": "1.0",
-                "tags":  ["example"],
+                "tags":  ["example-tag"],
                 "description": "This is an example package for testing"
             },
         "smbmap": {
@@ -11,7 +11,24 @@
                 "version": "1.0",
                 "tags":  ["smb", "enumeration", "network"],
                 "description": "SMBMap is a handy SMB enumeration tool"
+            },
+        "bloodhound-py": {
+                "name": "bloodhound-py",
+                "version": "1.0",
+                "tags":  ["active-directory", "ad", "windows"],
+                "description": "A Python based ingestor for BloodHound"
+            },
+        "bloodhound-py-ce": {
+                "name": "bloodhound-py-ce",
+                "version": "1.0",
+                "tags":  ["active-directory", "ad", "windows"],
+                "description": "A Python based ingestor for BloodHound (Community Edition)"
+            },
+        "sqlmap": {
+                "name": "sqlmap",
+                "version": "1.0",
+                "tags":  ["sql", "bruteforce", "network"],
+                "description": "Automatic SQL injection and database takeover tool"
             }
-        
         }
 }
