@@ -2,7 +2,7 @@
 name = "sqlmap"
 
 [apt]
-available = false
+available = true
 name = "sqlmap"
 
 [pacman]
