@@ -13,6 +13,7 @@ def parse_arguments():
   init_help_parser(sub_parser)
   init_version_parser(sub_parser)
   init_list_parser(sub_parser)
+  init_update_parser(sub_parser)
   return parser
 
 def init_install_parser(sub_parser: argparse._SubParsersAction):
@@ -20,6 +21,12 @@ def init_install_parser(sub_parser: argparse._SubParsersAction):
   install_parser._positionals.title = 'Arguments'
   install_parser.add_argument("package_name")
   return install_parser
+
+def init_update_parser(sub_parser: argparse._SubParsersAction):
+  update_parser = sub_parser.add_parser('update', help="Update a tool")
+  update_parser._positionals.title = 'Arguments'
+  update_parser.add_argument("package_name")
+  return update_parser
 
 def init_uninstall_parser(sub_parser: argparse._SubParsersAction):
   uninstall_parser = sub_parser.add_parser('uninstall', help="Uninstall a tool")
@@ -30,6 +37,7 @@ def init_uninstall_parser(sub_parser: argparse._SubParsersAction):
 def init_search_parser(sub_parser):
   search_parser = sub_parser.add_parser('search', help="Search-engine like tool search")
   search_parser._positionals.title = 'Arguments'
+  search_parser.add_argument("search_string")
   return search_parser
 
 def init_help_parser(sub_parser: argparse._SubParsersAction):

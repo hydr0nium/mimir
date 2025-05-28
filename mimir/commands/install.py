@@ -2,7 +2,7 @@
 from mimir.util.packages import get_package
 from mimir.util.constants import PACKAGE_MANAGERS
 from subprocess import run as subprocess_run, CalledProcessError
-from mimir.util.output import error,info,get
+from mimir.util.output import error,info,get, okay
 from mimir.database.handler import add_installed_package
 
 def main(args, config):
@@ -10,7 +10,7 @@ def main(args, config):
 	package = get_package(package_name)
 	info(f"Preparing to install package: '{package_name}'")
 	install(package, config)
-	info(f"Package '{package_name}' successfully installed!")
+	okay(f"Successfully installed '{package_name}'")
 
 
 def install(package, config):
@@ -18,43 +18,64 @@ def install(package, config):
 	for PACKAGE_MANAGER in PACKAGE_MANAGERS:
 		if package[PACKAGE_MANAGER]["available"] and config.getboolean("package_managers", PACKAGE_MANAGER):
 			manager = PACKAGE_MANAGER
-			name = package[PACKAGE_MANAGER]["name"]
+			details = package[PACKAGE_MANAGER]
 			break
 	else:
 		error(f"Could not find package!")
 		exit()
-	globals()[manager + "_install"](name)
-	add_installed_package(package["package"]["name"], name, manager)
+	globals()[manager + "_install"](details)
+	add_installed_package(package["package"]["name"], details["name"], manager)
 
-def apt_install(package):
+def apt_install(details):
+	package = details["name"]
 	package_manager = "apt"
 	command = ["sudo", package_manager, "install", package]
 	run(command, package_manager, package)
 
-def pacman_install(package):
+def pacman_install(details):
+	package = details["name"]
 	package_manager = "pacman"
 	command = ["sudo", package_manager, "-S", package]
 	run(command, package_manager, package)
 
-def pipx_install(package):
+def pipx_install(details):
+	package = details["name"]
+	if "git" in details:
+		package = details["git"]
 	package_manager = "pipx"
 	command = [package_manager, "install", package]
 	run(command, package_manager, package)
 
-def yay_install(package):
+def yay_install(details):
+	package = details["name"]
 	package_manager = "yay"
 	command = [package_manager, "-S", package]
 	run(command, package_manager, package)
 
 
-def snap_install(package):
+def snap_install(details):
+	package = details["name"]
 	package_manager = "snap"
 	command = ["sudo", package_manager, "install", package]
 	run(command, package_manager, package)
 
-def flatpak_install(package):
+def flatpak_install(details):
+	package = details["name"]
 	package_manager = "flatpak"
 	command = [package_manager, "install", package]
+	run(command, package_manager, package)
+
+def cargo_install(details):
+	package = details["name"]
+	package_manager = "cargo"
+	command = [package_manager, "install", package]
+	run(command, package_manager, package)
+
+def gem_install(details):
+	package = details["name"]
+	package_manager = "gem"
+	command = [package_manager, "install", package]
+	run(command, package_manager, package)
 
 
 

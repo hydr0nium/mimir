@@ -2,12 +2,16 @@ import json
 import tomllib
 from mimir.util.constants import PACKAGE_FILE, PACKAGE_URL, PACKAGE_TOML_BASE
 import requests
-from mimir.util.output import info, error
+from mimir.util.output import info, error, debug
 
 
 def get_package(package_name: str):
     package_json = get_package_json()
-    package = package_json[package_name]
+    try:
+        package = package_json[package_name]
+    except:
+        error(f"Could not find package with name '{package_name}'")
+        exit()
     package_name = package["name"]
     package = get_package_toml(package_name)
     return package

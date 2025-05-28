@@ -15,6 +15,7 @@ def main(args, config):
     package_manager = package[1]
     globals()[package_manager + "_uninstall"](installed_name)
     remove_package_from_db(package_name)
+    okay(f"Successfully removed '{package_name}'")
 
 def apt_uninstall(package):
 	package_manager = "apt"
@@ -43,8 +44,20 @@ def snap_uninstall(package):
 	run(command, package_manager, package)
 
 def flatpak_uninstall(package):
-	package_manager = "flatpak"
-	command = [package_manager, "uninstall", package]
+    package_manager = "flatpak"
+    command = [package_manager, "uninstall", package]
+    run(command, package_manager, package)
+
+def cargo_uninstall(package):
+    raise NotImplementedError # This is a weird way because cargo stores them in ~/.cargo/bin/ but you can't "uninstall them"
+    #package_manager = "cargo"
+    #command = [package_manager, "install", package]
+    #run(command, package_manager, package)
+
+def gem_uninstall(package):
+    package_manager = "gem"
+    command = [package_manager, "uninstall", package]
+    run(command, package_manager, package)
 
 
 

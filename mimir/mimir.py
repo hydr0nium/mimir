@@ -5,6 +5,7 @@ import mimir.commands.search as mimir_search
 import mimir.commands.version as mimir_version
 import mimir.commands.list as mimir_list
 import mimir.commands.uninstall as mimir_uninstall
+import mimir.commands.update as mimir_update
 from mimir.database.handler import create_db
 
 
@@ -23,7 +24,7 @@ def main():
         case "search":
             mimir_search.main(args, config)
         case "update":
-            raise NotImplemented
+            raise mimir_update.main(args, config)
         case "list":
             mimir_list.main(args, config)
         case "version":
