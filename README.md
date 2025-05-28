@@ -14,16 +14,17 @@ and 'tagged' search.
 -   [X] Implement tool searcher
 -   [X] Implement list feature
 -   [X] Implement version feature
--   [ ] Implement package info feature
--   [ ] Implement updater
--   [ ] Imlement upgrader
+-   [X] Implement package info feature
+-   [X] Implement updater
+-   [ ] Implement updatedb
+-   [ ] Implement updater for all packages 
 -   [X] Create config functionality
 -   [X] Create local sqlite backend for installed tools
 
 
 # Contribution:
 ## How to add a package:
-1. Edit the package file in `packages/packages.json`. The blueprint looks like this:
+1. Edit the package file in `packages/packages.json`. Please make `toolname` and `name_of_toml_without_extension` the same. The blueprint looks like this:
 ```json
 [...]
 "toolname": {

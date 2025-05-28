@@ -2,17 +2,18 @@ from rapidfuzz import fuzz
 import bisect
 from mimir.util.packages import get_package_json
 from math import tanh
-from mimir.util.output import debug
+from mimir.util.output import debug, title, end
 
 def main(args, config):
     search_string = args.search_string
     packages = get_package_json()
-    top_packages = search_packages(search_string, packages)
-    print("="*10 + "Best Matches" + "="*10)
+    top_packages = search_packages(search_string, packages, limit=args.limit, min_score=args.min_score)
+    title_txt = "Best Matches"
+    title(title_txt)
     for package in top_packages:
         score = round(package[1])
         print(f"({score}) " + package[0]["name"])
-    print("="*10 + "="*12 + "="*10)
+    end(title_txt)
 
 
 def search_packages(search_string, packages, limit=10, min_score=40):

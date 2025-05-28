@@ -38,7 +38,6 @@ def get_installed_package(package_name):
     query = "SELECT installed_name,installed_with FROM installed_packages WHERE name == (?)"
     res = cur.execute(query, (package_name,))
     res = res.fetchone()
-    debug(res)
     conn.commit()
     return res
 

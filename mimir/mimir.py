@@ -6,6 +6,8 @@ import mimir.commands.version as mimir_version
 import mimir.commands.list as mimir_list
 import mimir.commands.uninstall as mimir_uninstall
 import mimir.commands.update as mimir_update
+import mimir.commands.info as mimir_info
+import mimir.commands.help as mimir_help
 from mimir.database.handler import create_db
 
 
@@ -24,13 +26,18 @@ def main():
         case "search":
             mimir_search.main(args, config)
         case "update":
-            raise mimir_update.main(args, config)
+            mimir_update.main(args, config)
         case "list":
             mimir_list.main(args, config)
+        case "info":
+            mimir_info.main(args, config)
         case "version":
             mimir_version.main()
         case "help":
-            parser.print_help()
+            if args.subcommand == "help":
+                parser.print_help()
+            else:
+                mimir_help.main(args, config)
         case _:
             parser.print_help()
 	

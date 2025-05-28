@@ -29,7 +29,9 @@ def get_package_json():
         package_json = json.load(f)
         return package_json["packages"]
 
-
+def get_description(package_name):
+    packages_json = get_package_json()
+    return packages_json[package_name]["description"]
 
 # Apparently there is some caching problem with this idk why. It shouldn't cache stuff but it somehow does?!
 def get_package_toml(package_name):

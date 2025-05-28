@@ -19,3 +19,9 @@ def debug(message: str):
 
 def get(message: str):
     return input(f"{term_colors.INFO}[*] {message}{term_colors.RESET}").strip()
+
+def title(title: str, size=10):
+    print("="*size + f"{title}" + "="*size)
+
+def end(title: str, size=10):
+    print("="*size + "="*len(title) + "="*size)
