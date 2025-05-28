@@ -1,6 +1,3 @@
-[package]
-name = "example"
-
 [apt]
 available = false
 name = "example"

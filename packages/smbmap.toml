@@ -1,13 +1,8 @@
-[package]
-name = "smbmap"
-
 [apt]
 available = false
 
-
 [pacman]
 available = false
-
 
 [pipx]
 available = true
