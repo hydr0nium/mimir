@@ -2,7 +2,7 @@
 from mimir.database.handler import check_install, get_installed_package, remove_package_from_db
 from mimir.util.packages import get_package
 from subprocess import run as subprocess_run, CalledProcessError
-from mimir.util.output import error,info,get
+from mimir.util.output import error, info, get, okay
 
 
 def main(args, config):
