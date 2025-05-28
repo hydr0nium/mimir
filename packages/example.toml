@@ -2,19 +2,20 @@
 name = "example"
 
 [apt]
-available = true
+available = false
 name = "example"
 
 [pacman]
-available = true
+available = false
 name = "example"
 
 [pipx]
-available = true
+available = false
 name = "example"
+# git = git+https://... Use this for github installs
 
 [gem]
-available = true
+available = false
 name = "example"
 
 [cargo]
@@ -23,3 +24,7 @@ name = "example"
 
 [yay]
 available = false
+
+[example_package_manager]
+available = true
+name = "example"

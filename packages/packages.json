@@ -9,7 +9,7 @@
         "smbmap": {
                 "name": "smbmap",
                 "version": "1.0",
-                "tags":  ["smb"],
+                "tags":  ["smb", "enumeration", "network"],
                 "description": "SMBMap is a handy SMB enumeration tool"
             }
         
