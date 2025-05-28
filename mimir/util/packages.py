@@ -22,12 +22,16 @@ def get_package_json():
         package_json = download_package_json()
         with open(PACKAGE_FILE, "w") as f:
             f.write(package_json)
+        package_json = json.loads(package_json)
         return package_json["packages"]
 
     with open(PACKAGE_FILE, "r") as f:
         package_json = json.load(f)
         return package_json["packages"]
 
+
+
+# Apparently there is some caching problem with this idk why. It shouldn't cache stuff but it somehow does?!
 def get_package_toml(package_name):
     try:
         info("Downloading toml file for package")
@@ -39,7 +43,7 @@ def get_package_toml(package_name):
 
 def download_package_json():
     try:
-        info("Downloading packages.json file for package")
+        info("Downloading packages.json file")
         package_json = requests.get(PACKAGE_URL)
     except requests.exceptions.RequestException:
         error("Could not download packages.json file. Please check your internet connection!")
