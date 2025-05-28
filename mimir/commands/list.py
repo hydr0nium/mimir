@@ -5,6 +5,6 @@ def main(args, config):
     packages = get_installed_packages()
     print("="*10 + "Installed Packages" + "="*10)
     for package in packages:
-        print(package[0])
+        print(f"{package[0]} ({package[2]})")
     print("="*10 + "="*18 + "="*10)
 
