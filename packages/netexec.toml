@@ -1,0 +1,25 @@
+[apt]
+available = false
+
+[pacman]
+available = false
+
+[pipx]
+available = true
+name = "netexec"
+# git = git+https://... Use this for github installs
+
+[gem]
+available = false
+
+[snap]
+available = false
+
+[flatpak]
+available = false
+
+[cargo]
+available = false
+
+[yay]
+available = false

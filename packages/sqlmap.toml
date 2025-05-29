@@ -1,32 +1,9 @@
 [apt]
-available = true
 name = "sqlmap"
 
 [pacman]
-available = true
-name = "sqlmap"
-
-[pipx]
-available = false
-name = "sqlmap"
-# git = git+https://... Use this for github installs
-
-[gem]
-available = false
-name = "sqlmap"
-
-[cargo]
-available = false
-name = "sqlmap"
-
-[yay]
-available = false
-
-[flatpak]
-available = false
 name = "sqlmap"
 
 [snap]
-available = true
 name = "sqlmap"
 

@@ -1,0 +1,8 @@
+[yay]
+name = "ffuf"
+
+[go]
+name = "github.com/ffuf/ffuf/v2@latest"
+
+[apt]
+name = "ffuf"

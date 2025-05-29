@@ -1,0 +1,8 @@
+[apt]
+name = "wireshark"
+
+[pacman]
+name = "wireshark-qt"
+
+[yay]
+name = "wireshark-qt"

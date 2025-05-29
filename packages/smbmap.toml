@@ -1,25 +1,3 @@
-[apt]
-available = false
-
-[pacman]
-available = false
-
 [pipx]
-available = true
 name = "smbmap"
-
-[gem]
-available = false
-
-[snap]
-available = false
-
-[flatpak]
-available = false
-
-[cargo]
-available = false
-
-[yay]
-available = false
 

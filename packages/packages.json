@@ -1,9 +1,5 @@
 {
     "packages": {
-        "example": {
-                "tags":  ["example-tag"],
-                "description": "This is an example package for testing"
-            },
         "smbmap": {
                 "tags":  ["smb", "enumeration", "network"],
                 "description": "SMBMap is a handy SMB enumeration tool"
@@ -23,6 +19,26 @@
         "netexec": {
                 "tags":  ["network", "bruteforce", "enumeration", "active-directory", "crackmapexec", "nxc"],
                 "description": "NetExec (a.k.a nxc) is a network service exploitation tool that helps automate assessing the security of large networks."
+        },
+        "ffuf": {
+                "tags":  ["web", "bruteforce", "enumeration"],
+                "description": "Fast web fuzzer written in Go"
+        },
+        "cewl": {
+                "tags":  ["web", "wordlist", "enumeration"],
+                "description": "CeWL is a Custom Word List Generator"
+        },
+        "ghidra": {
+            "tags":  ["reverse", "binary", "pwn"],
+            "description": "Software reverse engineering framework"
+        },
+        "volatility3": {
+            "tags":  ["forensic", "dfir", "memory"],
+            "description": "Volatility is the world's most widely used framework for extracting digital artifacts from volatile memory (RAM) samples."
+        },
+        "impacket": {
+            "tags":  ["network", "active-directory", "bruteforce", "passthehash", "pass the hash", "pth"],
+            "description": "Impacket is a collection of Python classes for working with network protocols."
         }
         
     }
