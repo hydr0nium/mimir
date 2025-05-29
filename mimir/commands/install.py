@@ -2,7 +2,7 @@
 from mimir.util.packages import get_package
 from mimir.util.constants import PACKAGE_MANAGERS
 from subprocess import run as subprocess_run, CalledProcessError
-from mimir.util.output import error,info,get, okay
+from mimir.util.output import error, info, get, okay
 from mimir.database.handler import add_installed_package
 
 def main(args, config):
@@ -81,7 +81,7 @@ def gem_install(details):
 	run(command, package_manager, package)
 
 def go_install(details):
-	package = details["git"]
+	package = details["name"]
 	package_manager = "go"
 	command = [package_manager, "install", package]
 	run(command, package_manager, package)
