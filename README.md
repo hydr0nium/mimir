@@ -8,7 +8,35 @@ the installed package managers on that system. If a package is installed it auto
 on that system and remembers how it was installed. It also features a rich search-engine-like search function that accounts for typos
 and 'tagged' search. 
 
-# TODO
+## Installation
+mimir can easily be installed with pipx:
+```bash
+pipx install git+https://github.com/hydr0nium/mimir.git
+```
+
+## Usage
+```
+usage: mimir [command]
+
+Available Commands:
+
+    install      Install a tool
+    uninstall    Uninstall a tool
+    search       Search-engine like tool search
+    help         Show help
+    version      Show version
+    list         List all installed packages
+    update       Update a tool
+    info         Info for a package
+    update-repo  Update the local packages.json file
+
+options:
+  -h, --help     show this help message and exit
+
+```
+You can get more help by running `mimir help [command]` or `mimir [command] --help`
+
+## TODO
 
 -   [X] Implement tool installer
 -   [X] Implement tool searcher
