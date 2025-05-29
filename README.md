@@ -95,6 +95,6 @@ name = "toolname" # Name of the cargo package.
 name = "toolname" # Name of the yay package.
 
 [go]
-name = "github.com/..." Path to the github of the package
+name = "github.com/..." # Path to the github of the package
 ```
 3. Create a `pull request` for review. After the pull request is accepted your package should be good to go if people update their local `packages.json`.
