@@ -1,10 +1,11 @@
 from mimir.util.constants import PACKAGE_MANAGERS, INSTALLED_DB
 import sqlite3
-from mimir.util.output import debug
+from mimir.util.output import debug, info
 
 
 
 def add_installed_package(package_name, installed_name, package_manager):
+    info(f"Adding package '{package_name}' to installed packages")
     conn = sqlite3.connect(INSTALLED_DB)
     cur= conn.cursor()
     
@@ -14,6 +15,7 @@ def add_installed_package(package_name, installed_name, package_manager):
 
 
 def get_installed_packages():
+    info(f"Getting all installed packages")
     conn = sqlite3.connect(INSTALLED_DB)
     cur= conn.cursor()
     
@@ -24,6 +26,7 @@ def get_installed_packages():
     return res
 
 def check_install(package_name):
+    info(f"Checking if package '{package_name}' is installed")
     conn = sqlite3.connect(INSTALLED_DB)
     cur= conn.cursor()
     query = "SELECT name FROM installed_packages WHERE name == (?)"
@@ -33,6 +36,7 @@ def check_install(package_name):
     return len(res)==1
 
 def get_installed_package(package_name):
+    info(f"Getting installed package: '{package_name}'")
     conn = sqlite3.connect(INSTALLED_DB)
     cur= conn.cursor()
     query = "SELECT installed_name,installed_with FROM installed_packages WHERE name == (?)"
@@ -42,6 +46,7 @@ def get_installed_package(package_name):
     return res
 
 def remove_package_from_db(package_name):
+    info(f"Removing '{package_name}' from installed packages")
     conn = sqlite3.connect(INSTALLED_DB)
     cur= conn.cursor()
     query = "DELETE FROM installed_packages WHERE name == (?)"
@@ -49,6 +54,7 @@ def remove_package_from_db(package_name):
     conn.commit()
 
 def create_db():
+    info(f"Creating database if it does not exist")
     stms = ['''
     CREATE TABLE IF NOT EXISTS installed_packages (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

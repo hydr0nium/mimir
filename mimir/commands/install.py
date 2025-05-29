@@ -9,22 +9,25 @@ def main(args, config):
 	package_name = args.package_name
 	package = get_package(package_name)
 	info(f"Preparing to install package: '{package_name}'")
-	install(package, config)
+	install(package, config, package_name)
 	okay(f"Successfully installed '{package_name}'")
 
 
-def install(package, config):
+def install(package, config, package_name):
 	info(f"Searching through available package managers")
 	for PACKAGE_MANAGER in PACKAGE_MANAGERS:
-		if package[PACKAGE_MANAGER]["available"] and config.getboolean("package_managers", PACKAGE_MANAGER):
+		if PACKAGE_MANAGER not in package:
+			info(f"Skipping {PACKAGE_MANAGER} because its not found in the install toml file")
+			continue
+		if config.getboolean("package_managers", PACKAGE_MANAGER):
 			manager = PACKAGE_MANAGER
 			details = package[PACKAGE_MANAGER]
 			break
 	else:
-		error(f"Could not find package!")
+		error(f"Could not find a valid package manager combination to install '{package_name}'!")
 		exit()
 	globals()[manager + "_install"](details)
-	add_installed_package(package["package"]["name"], details["name"], manager)
+	add_installed_package(package_name, details["name"], manager)
 
 def apt_install(details):
 	package = details["name"]
@@ -74,6 +77,12 @@ def cargo_install(details):
 def gem_install(details):
 	package = details["name"]
 	package_manager = "gem"
+	command = [package_manager, "install", package]
+	run(command, package_manager, package)
+
+def go_install(details):
+	package = details["git"]
+	package_manager = "go"
 	command = [package_manager, "install", package]
 	run(command, package_manager, package)
 

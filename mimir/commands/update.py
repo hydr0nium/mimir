@@ -1,6 +1,5 @@
 
 from mimir.database.handler import check_install, get_installed_package, remove_package_from_db
-from mimir.util.packages import get_package
 from subprocess import run as subprocess_run, CalledProcessError
 from mimir.util.output import error,info,get,okay
 
@@ -45,6 +44,10 @@ def snap_update(package):
 def flatpak_update(package):
 	package_manager = "flatpak"
 	command = [package_manager, "update", package]
+
+def go_update(package):
+	package_manager = "go"
+	command = [package_manager, "install", package]
 
 
 

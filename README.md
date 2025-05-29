@@ -16,61 +16,57 @@ and 'tagged' search.
 -   [X] Implement version feature
 -   [X] Implement package info feature
 -   [X] Implement updater
--   [ ] Implement updatedb
+-   [X] Implement update-repo
+-   [ ] Detect currently installed packages on first start
 -   [ ] Implement updater for all packages 
+-   [ ] Add overwrite to package manager choice
+-   [ ] Finished info command
+-   [X] Implement better debug mode
+-   [X] Implement verbose mode
+-   [X] QoL package format change
 -   [X] Create config functionality
 -   [X] Create local sqlite backend for installed tools
 
 
 # Contribution:
 ## How to add a package:
-1. Edit the package file in `packages/packages.json`. Please make `toolname` and `name_of_toml_without_extension` the same. The blueprint looks like this:
+1. Edit the package file in `packages/packages.json`. The `toolname` represents the name that is used to install the package with mimir:
 ```json
 [...]
 "toolname": {
-                "name": "name_of_toml_without_extension", 
-                "version": "1.0",
                 "tags":  ["first_tag", "second_tag", "third_tag", "..."],
                 "description": "Here is some description ..."
             }
 [...]
 ```
-2. Add a `some_package.toml` file. Note that the name field in the `packages.json` needs to match the name of the file without the extension. Here is the blueprint of that file:
+2. Add a `toolname.toml` file. Note that the name in the `packages.json` and the name of the toml file (without the extension) need to be the same. You only need to add the sections that are usable:
 ```toml
-[package]
-name = "toolname" # Same as key in packages.json
-
 [apt]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the apt package. Doesn't matter if available is false
+name = "toolname" # Name of the apt package.
 
 [pacman]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the pacman package. Doesn't matter if available is false
+name = "toolname" # Name of the pacman package.
 
 [pipx]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the pipx package. Doesn't matter if available is false
+name = "toolname" # Name of the pipx package.
 # git = git+https://[...] # Use instead of name if you want 'pure' git installs
 
 [gem]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the gem package. Doesn't matter if available is false
+name = "toolname" # Name of the gem package.
 
 [snap]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the snap package. Doesn't matter if available is false
+name = "toolname" # Name of the snap package.
 
 [flatpak]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the flatpak package. Doesn't matter if available is false
+name = "toolname" # Name of the flatpak package.
 
 [cargo]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the cargo package. Doesn't matter if available is false
+name = "toolname" # Name of the cargo package.
 
 [yay]
-available = false # Set this to true of the package can be installed with this package manager
-name = "toolname" # Name of the yay package. Doesn't matter if available is false
+name = "toolname" # Name of the yay package.
+
+[go]
+name = "github.com/..." Path to the github of the package
 ```
 3. Create a `pull request` for review. After the pull request is accepted your package should be good to go if people update their local `packages.json`.

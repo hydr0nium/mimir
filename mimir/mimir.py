@@ -6,15 +6,20 @@ import mimir.commands.version as mimir_version
 import mimir.commands.list as mimir_list
 import mimir.commands.uninstall as mimir_uninstall
 import mimir.commands.update as mimir_update
+import mimir.commands.update_repo as mimir_update_repo
 import mimir.commands.info as mimir_info
 import mimir.commands.help as mimir_help
 from mimir.database.handler import create_db
+from mimir.util import constants
+from mimir.util.output import debug
 
 
 def main():
 
     parser = parse_arguments()
     args = parser.parse_args()
+    constants.DEBUG_MODE = args.debug
+    constants.VERBOSE_MODE = args.verbose
     config = load_config()
     create_db()
 
@@ -31,6 +36,8 @@ def main():
             mimir_list.main(args, config)
         case "info":
             mimir_info.main(args, config)
+        case "update-repo":
+            mimir_update_repo.main(args, config)
         case "version":
             mimir_version.main()
         case "help":

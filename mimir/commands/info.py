@@ -48,6 +48,24 @@ def pipx_version(pkg_name):
     m = re.search(pattern, result)
     return m.group(1)
 
+def yay_version(pkg_name):
+    raise NotImplemented
+
+def flatpak_version(pkg_name):
+    raise NotImplemented
+
+def snap_version(pkg_name):
+    raise NotImplemented
+
+def cargo_version(pkg_name):
+    raise NotImplemented
+
+def gem_version(pkg_name):
+    raise NotImplemented
+
+def go_version(pkg_name):
+    raise NotImplemented
+
 def run(command, package_manager, package):
     try:
         result = subprocess_run(command, check=True, capture_output=True, text=True)

@@ -1,3 +1,5 @@
+from mimir.util import constants
+
 class term_colors:
     INFO = "\033[1;34m"
     ERROR = "\033[1;31m"
@@ -12,10 +14,12 @@ def error(message: str):
     print(f"{term_colors.ERROR}[!] {message}{term_colors.RESET}")
 
 def info(message: str):
-    print(f"{term_colors.INFO}[*] {message}{term_colors.RESET}")
+    if constants.VERBOSE_MODE:
+        print(f"{term_colors.INFO}[*] {message}{term_colors.RESET}")
 
 def debug(message: str):
-    print(f"{term_colors.DEBUG}[?] {message}{term_colors.RESET}")
+    if constants.DEBUG_MODE:
+        print(f"{term_colors.DEBUG}[?] {message}{term_colors.RESET}")
 
 def get(message: str):
     return input(f"{term_colors.INFO}[*] {message}{term_colors.RESET}").strip()
