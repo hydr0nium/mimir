@@ -44,6 +44,10 @@
           "tags":  ["network", "scanner", "vulnerability"],
           "description": "Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers"
         }
+        "nmap": {
+          "tags": ["network", "scanner", "portscanner", "vulnerability", "discovery"],
+          "description": "Nmap ('Network Mapper') is a free and open source utility for network discovery and security auditing"
+        }
         
     }
 }
