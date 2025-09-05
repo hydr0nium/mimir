@@ -51,6 +51,10 @@
         "scrapy": {
           "tags": ["network", "spider", "crawler", "recon", "reconnaissance", "extraction", "discovery"],
           "description": "Scrapy is a web scraping framework to extract structured data from websites. It is cross-platform, and requires Python 3.9+. It is maintained by Zyte (formerly Scrapinghub) and many other contributors."
+        },
+        "hashcat": {
+          "tags": ["password", "cracker", "hash", "bruteforce"],
+          "description": "hashcat is the world's fastest and most advanced password recovery utility, supporting five unique modes of attack for over 300 highly-optimized hashing algorithms."
         }
         
         

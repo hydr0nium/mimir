@@ -1,0 +1,5 @@
+[apt]
+name = "hashcat"
+
+[pacman]
+name = "hashcat"
