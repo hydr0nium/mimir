@@ -2,7 +2,7 @@ import json
 import tomllib
 from mimir.util.constants import PACKAGE_FILE, PACKAGE_URL, PACKAGE_TOML_BASE
 import requests
-from mimir.util.output import info, error, debug
+from mimir.util.output import info, error, debug, okay
 
 
 def get_package(package_name: str):
