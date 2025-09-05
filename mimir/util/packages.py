@@ -35,9 +35,13 @@ def get_description(package_name):
 
 # Apparently there is some caching problem with this idk why. It shouldn't cache stuff but it somehow does?!
 def get_package_toml(package_name):
+    no_cache_header = {
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache"
+    }
     try:
         info("Downloading toml file for package")
-        package_toml = requests.get(PACKAGE_TOML_BASE + package_name + ".toml")
+        package_toml = requests.get(PACKAGE_TOML_BASE + package_name + ".toml", headers=no_cache_header)
         if package_toml.status_code == 404:
             error("Package '{package_name}' on remote not found")
             exit()
@@ -53,9 +57,13 @@ def save_package_json(content):
 
 
 def download_package_json():
+    no_cache_header = {
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache"
+    }
     try:
         info("Downloading packages.json file")
-        package_json = requests.get(PACKAGE_URL)
+        package_json = requests.get(PACKAGE_URL, headers=no_cache_header)
         if package_json.status_code == 404:
             error("Packages.json on remote not found")
             exit()
