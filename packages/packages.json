@@ -39,6 +39,10 @@
         "impacket": {
             "tags":  ["network", "active-directory", "bruteforce", "passthehash", "pass the hash", "pth"],
             "description": "Impacket is a collection of Python classes for working with network protocols."
+        },
+        "nikto": {
+          "tags":  ["network", "scanner", "vulnerability"],
+          "description": "Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers"
         }
         
     }
