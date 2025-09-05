@@ -47,6 +47,10 @@
         "nmap": {
           "tags": ["network", "scanner", "portscanner", "vulnerability", "discovery"],
           "description": "Nmap ('Network Mapper') is a free and open source utility for network discovery and security auditing"
+        },
+        "scrapy": {
+          "tags": [],
+          "description": "Scrapy is a web scraping framework to extract structured data from websites. It is cross-platform, and requires Python 3.9+. It is maintained by Zyte (formerly Scrapinghub) and many other contributors."
         }
         
     }
