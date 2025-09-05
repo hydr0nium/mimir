@@ -3,4 +3,4 @@ name = "finalrecon"
 
 [pipx]
 name = "finalrecon"
-git = "https://github.com/thewhiteh4t/FinalRecon.git"
+git = "git+https://github.com/thewhiteh4t/FinalRecon.git"
