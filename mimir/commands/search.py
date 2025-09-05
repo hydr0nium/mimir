@@ -2,7 +2,7 @@ from rapidfuzz import fuzz
 import bisect
 from mimir.util.packages import get_package_json
 from math import tanh
-from mimir.util.output import debug, title, end, info
+from mimir.util.output import debug, title, end, info, okay
 
 def main(args, config):
     search_string = args.search_string
