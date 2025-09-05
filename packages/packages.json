@@ -51,11 +51,8 @@
         "scrapy": {
           "tags": ["network", "spider", "crawler", "recon", "reconnaissance", "extraction", "discovery"],
           "description": "Scrapy is a web scraping framework to extract structured data from websites. It is cross-platform, and requires Python 3.9+. It is maintained by Zyte (formerly Scrapinghub) and many other contributors."
-        },
-        "finalrecon": {
-          "tags": ["recon", "crawler", "discovery", "reconnaissance", "portscanner", "port", "whois", "ssl"],
-          "description": "FinalRecon is an all in one automatic web reconnaissance tool written in python."
         }
+        
         
     }
 }
