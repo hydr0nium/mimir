@@ -1,5 +1,5 @@
 [apt]
 name = "finalrecon"
 
-[pacman]
-name = "finalrecon"
+[pipx]
+git = "https://github.com/thewhiteh4t/FinalRecon.git"
